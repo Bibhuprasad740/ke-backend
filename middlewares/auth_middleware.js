@@ -15,9 +15,14 @@ const auth = async (request, response, next) => {
         if (!isValidToken) return response.status(401).json({
             message: 'Token verification failed! Access Denied!'
         });
+        request.user = isValidToken.id;
+        request.token = token;
+        next();
     } catch (exception) {
         response.status(500).json({
             error: exception.message,
         });
     }
 }
+
+module.exports = auth;
