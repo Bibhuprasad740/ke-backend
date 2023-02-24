@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 
 const authRouter = require('./routers/auth');
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const app = express();
 const DB = 'mongodb+srv://19btcse09:Bibhu123@cluster0.r9yizrq.mongodb.net/?retryWrites=true&w=majority';
 
