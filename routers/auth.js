@@ -84,9 +84,16 @@ authRouter.post("/tokenIsValid", async (request, response) => {
 
 //get user data
 authRouter.get("/", auth, async (request, response) => {
-    const user = User.findById(request.user);
-    response.json({ ...user._doc, token: request.token });
-})
+    try {
+        const user = await User.findById(request.user);
+        response.json({ ...user._doc, token: request.token });
+    } catch (exception) {
+        console.log('Exception occured....');
+        response.status(500).json({
+            error: exception.message,
+        });
+    }
+});
 
 
 module.exports = authRouter;
