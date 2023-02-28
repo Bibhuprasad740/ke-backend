@@ -38,7 +38,7 @@ authRouter.post("/api/signup/", async (request, response) => {
 });
 
 // sign in route -->
-authRouter.post('/api/signin/', async (request, response) => {
+authRouter.post("/api/signin/", async (request, response) => {
     try {
         const { email, password } = request.body;
 
@@ -64,7 +64,7 @@ authRouter.post('/api/signin/', async (request, response) => {
 });
 
 // is token valid -->
-authRouter.post('/tokenIsValid', async (request, response) => {
+authRouter.post("/tokenIsValid", async (request, response) => {
     const authToken = 'x-auth-token';
     try {
         const token = request.header(authToken);
@@ -83,9 +83,9 @@ authRouter.post('/tokenIsValid', async (request, response) => {
 });
 
 //get user data
-authRouter.get('/', auth, async (request, response) => {
+authRouter.get("/", auth, async (request, response) => {
     const user = User.findById(request.user);
-    response.body({ ...user._doc, token: request.token });
+    response.json({ ...user._doc, token: request.token });
 })
 
 
