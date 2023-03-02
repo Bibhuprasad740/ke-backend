@@ -1,4 +1,4 @@
-const jst = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const publicKey = 'passwordKey';
 
