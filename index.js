@@ -1,6 +1,7 @@
 //import 'package:express/express.dart'
 const express = require('express');
 const mongoose = require('mongoose');
+const adminRouter = require('./routers/admin');
 
 
 const authRouter = require('./routers/auth');
@@ -11,6 +12,7 @@ const DB = 'mongodb+srv://19btcse09:Bibhu123@cluster0.r9yizrq.mongodb.net/?retry
 
 app.use(express.json());
 app.use(authRouter);
+app.use(adminRouter);
 
 mongoose.connect(DB)
     .then(() => {
